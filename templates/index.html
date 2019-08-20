@@ -2,9 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{% if title %}{{ title }}{% else %}Ask Mate{% endif %}</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}" />
 </head>
 <body>
-    <p>Index</p>
+<div class="main">
+{% if questions %}
+	<table>
+	  <thead><tr>
+		<td>Votes</td><td>Date</td><td>Title</td><td>Image</td><td>Views</td>
+	  </tr></thead>
+{% for question in questions %}
+	  <tr>
+		<td>{{ question.vote_number }}</td><td>{{ question.submission_time }}</td><td> <a href="">{{ question.title }}</a> </td><td>.</td><td>{{ question.view_number }}</td>
+	  </tr>
+{% endfor %}
+	</table>
+{% endif %}
+</div>
+
+<script type="text/javascript">
+(function(d){// lazy-loading;
+	var a=d.getElementsByTagName("head")[0],b=d.createElement("script");
+	b.src = "{{url_for('static', filename='script.js')}}";
+	b.onload = function(){
+		App_.ini();
+	}
+	a.appendChild(b);
+})(document);
+</script>
 </body>
 </html>
