@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, url_for
 import data_manager
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -7,6 +8,8 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     questions = data_manager.get_list_all_records('question')
+    for question in questions:
+        question['submission_time'] = datetime.fromtimestamp(int(question['submission_time'])).strftime("%Y-%m-%d  %H:%M")
     return render_template('index.html', questions=questions)
 
 
