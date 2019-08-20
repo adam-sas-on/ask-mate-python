@@ -17,7 +17,7 @@ def get_list_records_from_data(which_base):
     if which_base == 'question':
         full_base_track = BASE_NAME_QUESTIONS
     elif which_base == 'answer':
-        full_base_track = 'database_file' + BASE_NAME_ANSWER
+        full_base_track = BASE_NAME_ANSWER
     else:
         raise ValueError('Wrong database name "which_base"')
 

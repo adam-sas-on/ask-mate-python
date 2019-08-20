@@ -29,7 +29,6 @@ def add_new_question_to_base(title, question, image='None'):
     """
 
     exist_base = connection.get_list_records_from_data('question')
-    print(exist_base)
 
     try:
         max_exist_id = 0
