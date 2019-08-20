@@ -6,7 +6,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html', questions=None)
+    questions = data_manager.get_list_all_records('question')
+    return render_template('index.html', questions=questions)
 
 
 @app.route('/ask-question')
@@ -25,7 +26,7 @@ def get_form():
         return err
     else:
         data_manager.add_new_question_to_base(form_question['title'], form_question['question'])
-        return render_template('ask-question.html') # todo Change target to question details !!!!!
+        return render_template('ask-question.html')  # todo Change target to question details !!!!!
 
 
 if __name__ == '__main__':
