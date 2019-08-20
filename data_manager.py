@@ -25,8 +25,7 @@ def add_new_question_to_base(title, question, image='None'):
 
     :param title: Title question - string
     :param question: Content question - string
-    :param image: url to image - string - when image url isn't added default write to base string None
-    :return: - Nothing:)
+    :param image: optional url to image - string - when image url isn't added default write to base string 'None'
     """
 
     exist_base = connection.get_list_records_from_data('question')

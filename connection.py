@@ -1,4 +1,9 @@
-from flask import url_for
+"""
+Don't touch it!!!
+This module is connector between database and data_manager.py and only data_manager.py should have connection here.
+If You need somethings from database use data_manager.py
+"""
+
 import csv
 
 DELIMITER = ','
