@@ -2,8 +2,48 @@
 	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-.questions {
+html, body {
+	height:100%;
+	width:100%;
+	padding:0px;
+	margin:0px;
+	font-size:15pt;
+}
+
+.main {
 	display:table;
-	
+	height:100%;
+	width:100%;
+}
+
+.cell {
+	display:table-cell;
+	text-align:center;
+	align-items:center;
+	vertical-align:middle;
+}
+
+table.questions {
+	margin:0 auto;
+	border-bottom:1px solid #000;
+	text-align:left;
+}
+table.questions tr:nth-child(even) {
+	background-color:rgba(0,0,0, 0.05);
+}
+table.questions td {
+	padding:3pt 1em;
+	border-left:1px solid #555;
+}
+table.questions td:first-child {
+	padding:3pt 1em;
+	border-left:none;
+}
+
+div.bottom {
+	margin:1em;
+	padding:1em 1em 1em 2em;
+	text-align:left;
+	background-color:rgba(25,255,25,0.5);
 }
 
