@@ -26,9 +26,9 @@ def get_form():
         return err
     else:
         data_manager.add_new_question_to_base(form_question['title'], form_question['question'])
-        return render_template('ask-question.html') #todo Change all
+        return render_template('ask-question.html') # todo Change target to question details !!!!!
 
-
+a
 
 
 if __name__ == '__main__':

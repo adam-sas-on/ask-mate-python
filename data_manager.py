@@ -1,4 +1,5 @@
 """All database questions should be implemented using this module through connection module"""
+
 import connection
 import time
 
@@ -18,6 +19,15 @@ def get_list_all_records(which_base):
 
 
 def add_new_question_to_base(title, question, image='None'):
+    """
+    This function added new question to "question.csv" base
+
+
+    :param title: Title question - string
+    :param question: Content question - string
+    :param image: url to image - string - when image url isn't added default write to base string None
+    :return: - Nothing:)
+    """
 
     exist_base = connection.get_list_records_from_data('question')
     print(exist_base)
