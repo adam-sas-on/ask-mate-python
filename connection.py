@@ -1,11 +1,19 @@
 import csv
 
-DELIMITER = '\t'
-FIELDNAMES = ['id', 'story_title', 'user_story', 'acceptance_criteria', 'business_value', 'estimation']
+DELIMITER = ','
+FIELDNAMES_FOR_QUESTION = ['id', 'submission_time', 'view_number', 'vote_number', 'message', 'image']
+FIELDNAMES_FOR_ANSWER = ['id', 'submission_time', 'vote_number', 'question_id,message', 'image']
+BASE_NAME_QUESTIONS = 'question.csv'
+BASE_NAME_ANSWER = 'answer.csv'
 
 
-def get_list_data():
-    with open('data.csv', 'r') as csv_file:
+def get_list_data_from_question(which_base):
+    if which_base == 'question':
+        base_name = BASE_NAME_QUESTIONS
+    else:
+        base_name = BASE_NAME_ANSWER
+
+    with open(base_name, 'r') as csv_file:
         csv_reader = csv.DictReader(csv_file, delimiter=DELIMITER)
         list_of_records = []
         for record in csv_reader:
@@ -13,9 +21,16 @@ def get_list_data():
         return list_of_records
 
 
-def add_new_record(exist_records_list, new_record=False):
-    with open('data.csv', 'w') as update_file:
-        csv_writer = csv.DictWriter(update_file, fieldnames=FIELDNAMES, delimiter=DELIMITER)
+def add_new_record_question(which_base, exist_records_list, new_record=False):
+
+    if which_base == 'question':
+        base_name = BASE_NAME_QUESTIONS
+        field = FIELDNAMES_FOR_QUESTION
+    else:
+        base_name = BASE_NAME_ANSWER
+        field = FIELDNAMES_FOR_ANSWER
+    with open(base_name, 'w') as update_file:
+        csv_writer = csv.DictWriter(update_file, fieldnames=field , delimiter=DELIMITER)
         csv_writer.writeheader()
         if exist_records_list:
             for record in exist_records_list:
