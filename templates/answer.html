@@ -2,31 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% if title %}{{ title }}{% else %}Ask Mate{% endif %}</title>
+    <title>Ask question</title>
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}" />
 </head>
 <body>
 <div class="main">
   <div class="cell">
-{% if questions %}
-	<table class="questions">
-	  <thead><tr>
-		<td>Votes</td><td>Date</td><td>Title</td><td>Image</td><td>Views</td>
-	  </tr></thead>
-	{% for question in questions %}
-	  <tr>
-		<td>{{ question.vote_number }}</td><td>{{ question.submission_time }}</td><td> <a href="{{url_for('question', question_id = question.id )}}">{{ question.title }}</a> </td><td>.</td><td>{{ question.view_number }}</td>
-	  </tr>
-	{% endfor %}
-	</table>
-    <div class="bottom">To ask question click <a href="{{url_for('ask_question')}}">here</a>.</div>
-{% else %}
-    <div class="bottom">There are no questions yet. to ask a new one click <a href="{{url_for('ask_question')}}">here</a>.</div>
+	<form action="/get_form_which_question" method="post" title="new_question" name="new_question" content="Add title">
+		<table class="questions center">
+{% if question %}
+	      <tr><td>Asked question:</td></tr>
+	      <tr><td>{{ question.message }}</td></tr>
 {% endif %}
-
-	<!--<div class="authors">&amp;&copy;</div>-->
+	      <tr><td>Please type your answer:</td></tr>
+	      <tr><td><textarea rows="20" cols="50" title="answer" name="answer" placeholder="Add an answer"></textarea></td></tr>
+	      <tr><td><input type="submit" content="Add question"></td></tr>
+		</table>
+	</form>
+    <div class="bottom">Back to <a href="{{url_for('question', question_id = question.id ) }}">question page</a>.</div>
   </div>
 </div>
+
 
 <script type="text/javascript">
 (function(d){// lazy-loading;
@@ -40,3 +36,4 @@
 </script>
 </body>
 </html>
+
