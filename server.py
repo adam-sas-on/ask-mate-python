@@ -17,11 +17,11 @@ def index():
 @app.route('/question/<int:question_id>')
 def question(question_id):
     question = data_manager.get_single_question_by_id(question_id)
-
-    return render_template('qs_answers_list.html', question=question)
-
-
+    answers = data_manager.get_all_answers_by_id(question_id)
+# add +1 to visits;
+    return render_template('qs_answers_list.html', question=question, answers=answers)
 #
+
 
 @app.route('/ask-question')
 def ask_question():
