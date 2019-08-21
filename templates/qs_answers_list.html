@@ -8,19 +8,43 @@
 <body>
 <div class="main">
   <div class="cell">
-{% if questions %}
+{% if question %}
 	<table class="questions">
 	  <thead><tr>
 		<td>Votes</td><td>Date</td><td>Title</td><td>Image</td><td>Views</td>
 	  </tr></thead>
-	{% for question in questions %}
 	  <tr>
 		<td>{{ question.vote_number }}</td><td>{{ question.submission_time }}</td><td> <a href="">{{ question.title }}</a> </td><td>.</td><td>{{ question.view_number }}</td>
 	  </tr>
+	  <tr>
+		<td colspan="5">{{ question.message }}</td>
+	  </tr>
+	</table>
+{% endif %}
+{% if answers %}
+    <div class="bottom">Your answer: click <a href="{{url_for('ask_question')}}">here</a>.</div>
+{% else %}
+    <div class="bottom">There are no answers yet. You can be first: click <a href="{{url_for('ask_question')}}">here</a>.</div>
+{% endif %}
+{% if answers %}
+	<table class="questions">
+	  <thead><tr>
+		<td>Votes</td><td>Date</td><td>Image</td>
+	  </tr></thead>
+	{% for answer in answers %}
+	  <tr>
+		<td>{{ answer.vote_number }}</td><td>{{ answer.submission_time }}</td><td>.</td>
+	  </tr>
+	  <tr>
+		<td colspan="5">{{ answer.message }}</td>
+	  </tr>
+	  <tr>
+		<td colspan="5"><hr /></td>
+	  </tr>
 	{% endfor %}
 	</table>
-    <div class="bottom">To ask question click <a href="{{url_for('ask_question')}}">here</a>.</div>
 {% endif %}
+
 	<!--<div class="authors">&amp;&copy;</div>-->
   </div>
 </div>
