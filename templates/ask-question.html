@@ -3,12 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Ask question</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}" />
 </head>
 <body>
-<form action="/get_form_which_question" method="post" title="new_question" name="new_question" content="Add title">
-    <input type="text" minlength="5" name="title" title="title">
-    <textarea rows="20" cols="50" title="question" name="question" content="Add answer"></textarea>
-    <input type="submit" content="Add question">
-</form>
+<div class="main">
+  <div class="cell">
+	<form action="/get_form_which_question" method="post" title="new_question" name="new_question" content="Add title">
+		<table class="questions center">
+	      <tr><td><input type="text" minlength="5" name="title" title="title" placeholder="Type the title" ></td></tr>
+	      <tr><td><textarea rows="20" cols="50" title="question" name="question" content="Add answer"></textarea></td></tr>
+	      <tr><td><input type="submit" content="Add question"></td></tr>
+		</table>
+	</form>
+    <div class="bottom">Back to <a href="{{url_for('index')}}">homepage</a>.</div>
+  </div>
+</div>
+
+<script type="text/javascript">
+(function(d){// lazy-loading;
+	var a=d.getElementsByTagName("head")[0],b=d.createElement("script");
+	b.src = "{{url_for('static', filename='script.js')}}";
+	b.onload = function(){
+		App_.ini();
+	}
+	a.appendChild(b);
+})(document);
+</script>
 </body>
 </html>
+

@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import data_manager
-from datetime import datetime
+import util
 
 app = Flask(__name__)
 
@@ -9,7 +9,7 @@ app = Flask(__name__)
 def index():
     questions = data_manager.get_list_all_records('question')
     for question in questions:
-        question['submission_time'] = datetime.fromtimestamp(int(question['submission_time'])).strftime("%Y-%m-%d  %H:%M")
+        question['submission_time'] = util.time_convert(question['submission_time'])
     return render_template('index.html', questions=questions)
 
 
