@@ -120,3 +120,19 @@ def get_single_question_by_id(question_id):
     else:
         question = [record for record in exist_question if int(record['id']) == int(question_id)]
         return dict(question[0])
+
+
+def increment_value(id_question, name_value):
+    """
+    Use this function to increment 'view_number' or 'vote_number' in database
+    :param id_question: id question to increment
+    :param name_value: write 'view_number' or 'vote_number'
+    :return: write increment value in database
+    """
+    records = get_list_all_records('question')
+
+    for record in records:
+        if int(record['id']) == int(id_question):
+            record[name_value] = int(record['view_number']) + 1
+
+    connection.add_new_record_question('question', records)
