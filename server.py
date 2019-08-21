@@ -16,6 +16,7 @@ def index():
 @app.route('/question', defaults={'question_id': None})
 @app.route('/question/<int:question_id>')
 def question(question_id):
+    data_manager.increment_value(question_id, 'view_number')
     question = data_manager.get_single_question_by_id(question_id)
 
     answers = data_manager.get_all_answers_by_id(question_id)
@@ -23,18 +24,22 @@ def question(question_id):
     return render_template('qs_answers_list.html', question=question, answers=answers)
 
 
-#/ - - - post an answer - - -
+# / - - - post an answer - - -
 @app.route('/question/<int:question_id>/new-answer')
 def new_answer(question_id):
     question = data_manager.get_single_question_by_id(question_id)
     return render_template('answer.html', question=question)
+
+
 #
 
 @app.route('/answer_form', methods=['GET', 'POST'])
 def get_answer():
     pass
+
+
 #
-#/ - - - - - - - - - - - - -
+# / - - - - - - - - - - - - -
 
 
 @app.route('/ask-question')
