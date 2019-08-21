@@ -48,3 +48,21 @@ def add_new_question_to_base(title, question, image='None'):
         new_record['image'] = image
 
         connection.add_new_record_question('question', exist_base, new_record)
+
+
+def get_all_answers_by_id(question_id):
+    """
+    This function return all records with answer by id question
+    :param question_id: id question - int or decimal str
+    :return: list of combinedanswer
+    """
+    try:
+        exist_answer = get_list_all_records('answer')
+
+    except ValueError('Problem whit database answer')as err:
+        return err
+
+    else:
+        combined_answer = [record for record in exist_answer if int(record['question_id']) == int(question_id)]
+        return combined_answer
+
