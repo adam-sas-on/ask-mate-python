@@ -10,9 +10,10 @@
   <div class="cell">
 	<form action="/get_form_which_question" method="post" title="new_question" name="new_question" content="Add title">
 		<table class="questions center">
-	      <tr><td><input type="text" minlength="5" name="title" title="title" placeholder="Type the title" ></td></tr>
-	      <tr><td><textarea rows="20" cols="50" title="question" name="question" content="Add answer"></textarea></td></tr>
-	      <tr><td><input type="submit" content="Add question"></td></tr>
+		 <thead><tr><td>Asking question</td></tr></thead>
+	      <tr><td> <input type="text" minlength="5" name="title" title="title" placeholder="Type the title" /> </td></tr>
+	      <tr><td> <textarea rows="20" cols="50" title="question" name="question" content="Add answer"></textarea> </td></tr>
+	      <tr><td> <input type="submit" content="Add question" /> </td></tr>
 		</table>
 	</form>
     <div class="bottom">Back to <a href="{{url_for('index')}}">homepage</a>.</div>

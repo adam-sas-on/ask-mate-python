@@ -21,13 +21,17 @@
 	  </tr>
 	</table>
 {% endif %}
+    <div class="bottom"><div style="float:left">
+		{% if answers %}
+			Your answer: click <a href="{{url_for('new_answer', question_id = question.id)}}">here</a>.
+		{% else %}
+			There are no answers yet. You can be first: click <a href="{{url_for('new_answer', question_id = question.id)}}">here</a>.
+		{% endif %}
+    	</div>
+		<div style="float:right;">Back to <a href="{{url_for('index')}}">homepage</a></div>
+    </div>
 {% if answers %}
-    <div class="bottom">Your answer: click <a href="{{url_for('new_answer', question_id = question.id)}}">here</a>.</div>
-{% else %}
-    <div class="bottom">There are no answers yet. You can be first: click <a href="{{url_for('new_answer', question_id = question.id)}}">here</a>.</div>
-{% endif %}
-{% if answers %}
-	<table class="questions">
+	<table class="answers">
 	  <thead><tr>
 		<td>Votes</td><td>Date</td><td>Image</td>
 	  </tr></thead>

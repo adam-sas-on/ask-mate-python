@@ -32,13 +32,22 @@ table.questions {
 table.questions tr:nth-child(even) {
 	background-color:rgba(0,0,0, 0.05);
 }
-table.questions td {
+table td {
 	padding:3pt 1em;
 	border-left:1px solid #555;
 }
-table.questions td:first-child {
+table td:first-child {
 	padding:3pt 1em;
 	border-left:none;
+}
+
+table.answers {
+	margin:0 auto;
+	border-bottom:1px solid #000;
+	text-align:left;
+}
+table.answers tr:nth-child(3n+2) {
+	background-color:rgba(0,0,0, 0.05);
 }
 
 table.center {
@@ -51,6 +60,21 @@ div.bottom {
 	text-align:left;
 	background-color:rgba(25,255,25,0.5);
 }
+div.bottom::after {
+	content: " ";
+	display: block; 
+	height: 0; 
+	clear: both;
+}
+
+input, textarea {
+	font-size:15pt;
+}
+
+hr {
+	height:3px;
+}
+
 
 div.authors {
 	position:absolute;
@@ -60,10 +84,3 @@ div.authors {
 	background-color:rgba(25,255,25,0.5);
 }
 
-input, textarea {
-	font-size:15pt;
-}
-
-hr {
-	height:5px;
-}
