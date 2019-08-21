@@ -8,7 +8,7 @@
 <body>
 <div class="main">
   <div class="cell">
-	<form action="/get_form_which_question" method="post" title="new_question" name="new_question" content="Add title">
+	<form action="{{url_for('get_answer') }}" method="post" title="new_answer" name="new_answer">
 		<table class="questions center">
 {% if question %}
 	      <tr><td>Asked question:</td></tr>
@@ -16,7 +16,8 @@
 {% endif %}
 	      <tr><td>Please type your answer:</td></tr>
 	      <tr><td><textarea rows="20" cols="50" title="answer" name="answer" placeholder="Add an answer"></textarea></td></tr>
-	      <tr><td><input type="submit" content="Add question"></td></tr>
+	      <tr><td><input type="submit" value="Add an answer"></td></tr>
+	      <tr><td id="notification"></td></tr>
 		</table>
 	</form>
     <div class="bottom">
