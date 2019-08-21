@@ -23,6 +23,18 @@ def question(question_id):
     return render_template('qs_answers_list.html', question=question, answers=answers)
 
 
+#/ - - - post an answer - - -
+@app.route('/question/<int:question_id>/new-answer')
+def new_answer(question_id):
+    question = data_manager.get_single_question_by_id(question_id)
+    return render_template('answer.html', question=question)
+#
+
+@app.route('/answer_form', methods=['GET', 'POST'])
+def get_answer():
+    pass
+#
+#/ - - - - - - - - - - - - -
 
 @app.route('/ask-question')
 def ask_question():
