@@ -16,7 +16,9 @@ def index():
 @app.route('/question', defaults={'question_id': None})
 @app.route('/question/<int:question_id>')
 def question(question_id):
-    return render_template('qs_answers_list.html')
+    question = data_manager.get_single_question_by_id(question_id)
+
+    return render_template('qs_answers_list.html', question=question)
 
 
 #
