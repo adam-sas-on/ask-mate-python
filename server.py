@@ -21,8 +21,6 @@ def question(question_id):
     return render_template('qs_answers_list.html', question=question)
 
 
-#
-
 @app.route('/ask-question')
 def ask_question():
     return render_template('ask-question.html')
@@ -38,8 +36,10 @@ def get_form():
     except ValueError('Check form which question, non POST method?') as err:
         return err
     else:
-        data_manager.add_new_question_to_base(form_question['title'], form_question['question'])
-        return render_template('ask-question.html')  # todo Change target to question details !!!!!
+        id_new_question = data_manager.add_new_question_to_base(form_question['title'], form_question['question'])
+        print(id_new_question)
+        return question(id_new_question)
+
 
 
 if __name__ == '__main__':

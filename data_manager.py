@@ -23,9 +23,11 @@ def add_new_question_to_base(title, question, image='None'):
     This function added new question to "question.csv" base
 
 
+    :type title: object
     :param title: Title question - string
     :param question: Content question - string
     :param image: optional url to image - string - when image url isn't added default write to base string 'None'
+    :return number new question id
     """
 
     exist_base = connection.get_list_records_from_data('question')
@@ -48,6 +50,8 @@ def add_new_question_to_base(title, question, image='None'):
         new_record['image'] = image
 
         connection.add_new_record_question('question', exist_base, new_record)
+        print(new_record['id'])
+        return new_record['id']
 
 
 def add_new_answer_to_base(question_id, answer, image='None'):
@@ -58,6 +62,7 @@ def add_new_answer_to_base(question_id, answer, image='None'):
     :param question_id: question id - decimal string or int
     :param answer: Content question - string
     :param image: optional url to image - string - when image url isn't added default write to base string 'None'
+    :return
     """
     try:
         exist_base = connection.get_list_records_from_data('answer')
