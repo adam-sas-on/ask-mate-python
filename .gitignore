@@ -5,7 +5,10 @@ __pycache__/
 
 # C extensions
 *.so
-
+# bartek  - my gitignore
+test_page.py
+answer.csv
+question.csv
 # Distribution / packaging
 .Python
 env/

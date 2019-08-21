@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request
 import data_manager
 import util
 
@@ -13,10 +13,12 @@ def index():
     return render_template('index.html', questions=questions)
 
 
-@app.route('/question', defaults = {'question_id': None}):
-@app.route('/question/<int:question_id>'):
+@app.route('/question', defaults={'question_id': None})
+@app.route('/question/<int:question_id>')
 def question(question_id):
-	return render_template('qs_answers_list.html')
+    return render_template('qs_answers_list.html')
+
+
 #
 
 @app.route('/ask-question')
