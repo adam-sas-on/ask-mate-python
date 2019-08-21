@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import data_manager
 import util
 
@@ -19,9 +19,8 @@ def question(question_id):
     question = data_manager.get_single_question_by_id(question_id)
 
     answers = data_manager.get_all_answers_by_id(question_id)
-# add +1 to visits;
+    # add +1 to visits;
     return render_template('qs_answers_list.html', question=question, answers=answers)
-
 
 
 @app.route('/ask-question')
@@ -40,9 +39,7 @@ def get_form():
         return err
     else:
         id_new_question = data_manager.add_new_question_to_base(form_question['title'], form_question['question'])
-        print(id_new_question)
-        return question(id_new_question)
-
+        return redirect(url_for('question', question_id=id_new_question))
 
 
 if __name__ == '__main__':
