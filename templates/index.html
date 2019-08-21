@@ -13,14 +13,15 @@
 	  <thead><tr>
 		<td>Votes</td><td>Date</td><td>Title</td><td>Image</td><td>Views</td>
 	  </tr></thead>
-{% for question in questions %}
+	{% for question in questions %}
 	  <tr>
 		<td>{{ question.vote_number }}</td><td>{{ question.submission_time }}</td><td> <a href="">{{ question.title }}</a> </td><td>.</td><td>{{ question.view_number }}</td>
 	  </tr>
-{% endfor %}
+	{% endfor %}
 	</table>
     <div class="bottom">To ask question click <a href="{{url_for('ask_question')}}">here</a>.</div>
 {% endif %}
+	<!--<div class="authors">&amp;&copy;</div>-->
   </div>
 </div>
 
