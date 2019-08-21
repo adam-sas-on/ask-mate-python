@@ -21,6 +21,7 @@ html, body {
 	text-align:center;
 	align-items:center;
 	vertical-align:middle;
+	position:relative;
 }
 
 table.questions {
@@ -44,6 +45,14 @@ div.bottom {
 	margin:1em;
 	padding:1em 1em 1em 2em;
 	text-align:left;
+	background-color:rgba(25,255,25,0.5);
+}
+
+div.authors {
+	position:absolute;
+    bottom:0;
+    right:0;
+	padding:1em;
 	background-color:rgba(25,255,25,0.5);
 }
 
