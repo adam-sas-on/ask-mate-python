@@ -62,12 +62,12 @@ def get_answer():
 #/ - - - - - - -Votes- - - - - - -
 @app.route('/question/<int:question_id>/vote-up')
 def vote_up_question(question_id):
-
+    data_manager.increment_value('question', question_id, False, 'vote_number')
     return redirect(url_for('question', question_id=question_id))
 #
 @app.route('/question/<int:question_id>/vote-dowm')
 def vote_down_question(question_id):
-
+    data_manager.increment_value('question', question_id, False, 'vote_number', 'down')
     return redirect(url_for('question', question_id=question_id))
 #
 
@@ -75,12 +75,16 @@ def vote_down_question(question_id):
 def vote_up_answer(answer_id):
     answer = data_manager.get_single_answer_by_id(answer_id)
     question_id = answer['question_id']
+
+    data_manager.increment_value('answer', question_id, answer_id, 'vote_number')
     return redirect(url_for('question', question_id=question_id))
 #
 @app.route('/answer/<int:answer_id>/vote-dowm')
 def vote_down_answer(answer_id):
     answer = data_manager.get_single_answer_by_id(answer_id)
     question_id = answer['question_id']
+
+    data_manager.increment_value('answer', question_id, answer_id, 'vote_number', 'down')
     return redirect(url_for('question', question_id=question_id))
 
 #/ - - - - - - - - - - - - - - - -
