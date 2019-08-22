@@ -19,6 +19,7 @@
 	      <tr><td><input type="submit" value="Add an answer"></td></tr>
 	      <tr><td id="notification"></td></tr>
 		</table>
+		<input type="hidden" value="{{ question.id }}" name="q_id" />
 	</form>
     <div class="bottom">
 		<div style="float:left">Back to <a href="{{url_for('question', question_id = question.id ) }}">question page</a>.</div>
