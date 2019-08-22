@@ -117,7 +117,7 @@ def delete_question(question_id):
 def edit_question(question_id):
     question = data_manager.get_single_question_by_id(question_id)
 
-    return render_template('ask-question.html')
+    return render_template('ask-question.html', question = question)
 #
 
 if __name__ == '__main__':
