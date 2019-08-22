@@ -106,5 +106,5 @@ ENV/
 .idea/
 
 # database files
-database_file/question.csv
-database_file/answer.csv
+question.csv
+answer.csv

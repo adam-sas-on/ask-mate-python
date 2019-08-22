@@ -17,7 +17,7 @@ var App_ = (function(){
 				Event.prototype.stopPropagation=function(){this.cancelBubble=true;};
 			}
 
-			page = {notification:null, colorBtn:null};
+			page = {notification:null, colorBtn:null, votes:null};
 			forms = {f:null, title:null, question:null, answer:null, button:null};
 
 		}
@@ -38,6 +38,7 @@ var App_ = (function(){
 		var elem = document.getElementsByTagName("body");
 		if(elem.length > 0) cfg.bgColor = elem[0].style.backgroundColor;
 
+		page.votes = document.getElementsByClassName("votes");
 	}
 	function getForm(args){
 		var nodes = forms.f.getElementsByTagName("input");
@@ -93,15 +94,24 @@ var App_ = (function(){
 		return true;
 	}
 
+	function take_vote(e){
+		var e2 = (e)?e:window.event, linkClicked = e2.target || e2.srcElement;
+
+		linkClicked.removeEventListener("click", take_vote);
+
+		linkClicked.parentNode.removeChild(linkClicked);
+	}
+
 	function run(){
-		if(!forms.f) return;
 
 		if(cfg.delegate == 1){
-			forms.f.addEventListener("submit", validate, false);
+			if(forms.f) forms.f.addEventListener("submit", validate, false);
+			for(var i = page.votes.length - 1; i >= 0; i--) page.votes[i].addEventListener("click", take_vote);
 		} else if(cfg.delegate == 2){
-			forms.f.attachEvent("onsubmit", validate);
-		} else
-			forms.f.onsubmit = validate;
+			if(forms.f) forms.f.attachEvent("onsubmit", validate);
+		} else {
+			if(forms.f) forms.f.onsubmit = validate;
+		}
 	}
 
 	return {
