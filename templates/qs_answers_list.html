@@ -37,7 +37,9 @@
 	  </tr></thead>
 	{% for answer in answers %}
 	  <tr>
-		<td>{{ answer.vote_number }}</td><td>{{ answer.submission_time }}</td><td>.</td>
+		<td><a href="" class="votes"><img src="{{ url_for('static', filename='imgs/vote_down.png') }}" /></a> {{ answer.vote_number }}
+			 <a href="" class="votes"><img src="{{ url_for('static', filename='imgs/vote_up.png') }}" /></a>
+			</td><td>{{ answer.submission_time }}</td><td>.</td>
 	  </tr>
 	  <tr>
 		<td colspan="5">{{ answer.message }}</td>
