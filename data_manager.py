@@ -121,6 +121,23 @@ def get_single_question_by_id(question_id):
         question = [record for record in exist_question if int(record['id']) == int(question_id)]
         return dict(question[0])
 
+def get_single_answer_by_id(answer_id):
+    """
+    If you need concrete answer by id
+    This function return dictionary with items answer
+    :param answer_id: id answer - int or decimal str
+    :return: dictionary with items answer
+    """
+    try:
+        exist_answer = get_list_all_records('answer')
+
+    except ValueError('Problem whit database answer')as err:
+        return err
+
+    else:
+        answer = [record for record in exist_answer if int(record['id']) == int(answer_id)]
+        return dict(answer[0])
+
 
 def increment_value(which_base, record_id, which_value='vote_number', up_or_down='up'):
     """
