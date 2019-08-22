@@ -139,24 +139,32 @@ def get_single_answer_by_id(answer_id):
         return dict(answer[0])
 
 
-def increment_value(which_base, record_id, which_value='vote_number', up_or_down='up'):
+def increment_value(which_base, question_id, answer_id=False, which_value='vote_number', up_or_down='up'):
     """
     This function increment or decrement possible value in database
 
     :param which_base: 'answer' or 'question' - string
-    :param record_id: record id to change - int or decimal string
+    :param question_id: question id to change - int or decimal string
+    :param answer_id: answer id to change - int or decimal string
     :param which_value: which value to change 'vote_number' or 'view_number' - string
     :param up_or_down: 'up' or 'down' - increment or decrement - string
     :return: change value in checked base
     """
-
     records = get_list_all_records(which_base)
 
-    for record in records:
-        if int(record['id']) == int(record_id):
-            if up_or_down == 'up':
-                record[which_value] = int(record[which_value]) + 1
-            elif up_or_down == 'up':
-                record[which_value] = int(record[which_value]) - 1
+    def change():
+        if up_or_down == 'up':
+            record[which_value] = int(record[which_value]) + 1
+        elif up_or_down == 'down':
+            record[which_value] = int(record[which_value]) - 1
+
+    if which_base == 'question':
+        for record in records:
+            if int(record['id']) == int(question_id):
+                change()
+    elif which_base == 'answer':
+        for record in records:
+            if int(record['question_id']) == int(question_id) and int(record['id']) == int(answer_id):
+                change()
 
     connection.add_new_record_question(which_base, records)
