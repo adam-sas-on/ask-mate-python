@@ -100,6 +100,7 @@ var App_ = (function(){
 		linkClicked.removeEventListener("click", take_vote);
 
 		linkClicked.parentNode.removeChild(linkClicked);
+		/* TODOs: e2.preventDefault(); send ajax and "ready state" function adds +1 or -1 to corresponding votes; */
 	}
 
 	function run(){
