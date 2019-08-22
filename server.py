@@ -17,7 +17,7 @@ def index():
 @app.route('/question', defaults={'question_id': None})
 @app.route('/question/<int:question_id>')
 def question(question_id):
-    data_manager.increment_value(question_id, 'view_number')
+    data_manager.increment_value('question', question_id, 'view_number')
     question = data_manager.get_single_question_by_id(question_id)
     question['submission_time'] = util.time_convert(question['submission_time'])
 

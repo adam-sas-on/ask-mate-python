@@ -7,8 +7,7 @@ __pycache__/
 *.so
 # bartek  - my gitignore
 test_page.py
-answer.csv
-question.csv
+database_file/
 # Distribution / packaging
 .Python
 env/

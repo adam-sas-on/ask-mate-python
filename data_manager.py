@@ -122,17 +122,24 @@ def get_single_question_by_id(question_id):
         return dict(question[0])
 
 
-def increment_value(id_question, which_value):
+def increment_value(which_base, record_id, which_value='vote_number', up_or_down='up'):
     """
-    Use this function to increment 'view_number' or 'vote_number' in database
-    :param id_question: id question to increment
-    :param which_value: write 'view_number' or 'vote_number'
-    :return: update (increment) value in database
+    This function increment or decrement possible value in database
+
+    :param which_base: 'answer' or 'question' - string
+    :param record_id: record id to change - int or decimal string
+    :param which_value: which value to change 'vote_number' or 'view_number' - string
+    :param up_or_down: 'up' or 'down' - increment or decrement - string
+    :return: change value in checked base
     """
-    records = get_list_all_records('question')
+
+    records = get_list_all_records(which_base)
 
     for record in records:
-        if int(record['id']) == int(id_question):
-            record[which_value] = int(record['view_number']) + 1
+        if int(record['id']) == int(record_id):
+            if up_or_down == 'up':
+                record[which_value] = int(record[which_value]) + 1
+            elif up_or_down == 'up':
+                record[which_value] = int(record[which_value]) - 1
 
-    connection.add_new_record_question('question', records)
+    connection.add_new_record_question(which_base, records)
