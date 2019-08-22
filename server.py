@@ -61,13 +61,23 @@ def get_answer():
 
 #/ - - - - - - -Votes- - - - - - -
 @app.route('/question/<int:question_id>/vote-up')
-def vote_up(question_id):
+def vote_up_question(question_id):
     return ""
 #
 @app.route('/question/<int:question_id>/vote-dowm')
-def vote_down(question_id):
+def vote_down_question(question_id):
     return ""
 #
+
+@app.route('/answer/<int:answer_id>/vote-up')
+def vote_up_answer(answer_id):
+    return ""
+#
+@app.route('/answer/<int:answer_id>/vote-dowm')
+def vote_down_answer(answer_id):
+    return ""
+#
+
 #/ - - - - - - - - - - - - - - - -
 
 
