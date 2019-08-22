@@ -62,11 +62,13 @@ def get_answer():
 #/ - - - - - - -Votes- - - - - - -
 @app.route('/question/<int:question_id>/vote-up')
 def vote_up_question(question_id):
-    return ""
+
+    return redirect(url_for('question', question_id=question_id))
 #
 @app.route('/question/<int:question_id>/vote-dowm')
 def vote_down_question(question_id):
-    return ""
+
+    return redirect(url_for('question', question_id=question_id))
 #
 
 @app.route('/answer/<int:answer_id>/vote-up')
