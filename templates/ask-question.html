@@ -11,9 +11,15 @@
 	<form action="/get_form_which_question" method="post" title="new_question" name="new_question" content="Add title">
 		<table class="questions center">
 		 <thead><tr><td>Asking question</td></tr></thead>
-	      <tr><td> <input type="text" minlength="5" name="title" title="title" placeholder="Type the title" /> </td></tr>
-	      <tr><td> <textarea rows="20" cols="50" title="question" name="question" content="Add answer"></textarea> </td></tr>
-	      <tr><td> <input type="submit" value="Add question" /> </td></tr>
+	      <tr><td>
+			<input type="text" minlength="5" name="title" title="title" placeholder="Type the title" value="" />
+		  </td></tr>
+	      <tr><td>
+			<textarea rows="20" cols="50" title="question" name="question" content="Add answer" value="" ></textarea>
+		  </td></tr>
+	      <tr><td>
+			<input type="submit" value="Add question" />
+		  </td></tr>
 	      <tr><td id="notification"></td></tr>
 		</table>
 	</form>
