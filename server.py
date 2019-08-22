@@ -73,11 +73,15 @@ def vote_down_question(question_id):
 
 @app.route('/answer/<int:answer_id>/vote-up')
 def vote_up_answer(answer_id):
-    return ""
+    answer = data_manager.get_single_answer_by_id(answer_id)
+    question_id = answer['question_id']
+    return redirect(url_for('question', question_id=question_id))
 #
 @app.route('/answer/<int:answer_id>/vote-dowm')
 def vote_down_answer(answer_id):
-    return ""
+    answer = data_manager.get_single_answer_by_id(answer_id)
+    question_id = answer['question_id']
+    return redirect(url_for('question', question_id=question_id))
 #
 
 #/ - - - - - - - - - - - - - - - -
