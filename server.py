@@ -105,6 +105,17 @@ def get_form():
         id_new_question = data_manager.add_new_question_to_base(form_question['title'], form_question['question'])
         return redirect(url_for('question', question_id=id_new_question))
 
+@app.route('/question/<int:question_id>/delete')
+def delete_question(question_id):
+    return ""
+#
+
+@app.route('/question/<int:question_id>/edit')
+def edit_question(question_id):
+    question = data_manager.get_single_question_by_id(question_id)
+
+    return render_template('ask-question.html')
+#
 
 if __name__ == '__main__':
     app.run(port=8000,
