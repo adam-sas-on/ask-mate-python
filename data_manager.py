@@ -96,7 +96,7 @@ def get_all_answers_by_id(question_id):
     try:
         exist_answer = get_list_all_records('answer')
 
-    except ValueError('Problem whit database answer')as err:
+    except TypeErrorError('Problem whit database answer')as err:
         return err
 
     else:
