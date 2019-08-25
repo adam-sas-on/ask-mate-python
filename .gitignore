@@ -2,3 +2,7 @@
 .idea/
 __pycache__/
 database_file/quesn.csv
+database_file/
+
+# virtualenv
+venv/
